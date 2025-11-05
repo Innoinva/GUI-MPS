@@ -1,0 +1,271 @@
+/* auditory-training-app/css/views/_game-screen-basic.css */
+
+/*
+    NOTE: The .visually-hidden-input class used for the toggle switch
+    is expected to be defined in a global CSS file (e.g., _base.css or a utility stylesheet)
+    for broader reusability and to keep component-specific styles focused.
+    Example definition for .visually-hidden-input:
+    .visually-hidden-input {
+        position: absolute;
+        opacity: 0;
+        width: 0;
+        height: 0;
+        margin: -1px;
+        padding: 0;
+        overflow: hidden;
+        border: 0;
+        clip: rect(0 0 0 0);
+        white-space: nowrap;
+    }
+*/
+
+.view-container[data-view-id="game-screen-basic"] {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background-color: var(--color-background-app);
+    padding: var(--spacing-md);
+    box-sizing: border-box; /* Ensure padding doesn't make it overflow 100% height */
+}
+
+.view-container[data-view-id="game-screen-basic"].is-fullscreen {
+    padding: 0;
+    background-color: var(--color-background-content);
+}
+.view-container[data-view-id="game-screen-basic"].is-fullscreen .game-screen-controls {
+    border-radius: 0;
+    margin-bottom: 0;
+}
+.view-container[data-view-id="game-screen-basic"].is-fullscreen .game-button-area {
+    border: none;
+    border-radius: 0;
+}
+
+.view-container[data-view-id="game-screen-basic"] .view-header {
+    text-align: center;
+    margin-bottom: var(--spacing-md);
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 1px solid var(--color-border-light);
+}
+.view-container[data-view-id="game-screen-basic"].is-fullscreen .view-header {
+    display: none;
+}
+
+.view-container[data-view-id="game-screen-basic"] .view-header h2 {
+    color: var(--color-text-dark);
+    font-size: 1.8em;
+}
+.view-container[data-view-id="game-screen-basic"] .view-header p {
+    font-size: 0.95em;
+    color: var(--color-text-subtle);
+}
+
+.game-screen-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--spacing-lg);
+    padding: var(--spacing-sm) var(--spacing-md);
+    background-color: var(--color-neutral-lightest);
+    border-radius: var(--border-radius-md);
+    margin-bottom: var(--spacing-md);
+    box-shadow: var(--box-shadow-light);
+    flex-wrap: wrap;
+}
+
+.control-group {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.control-group .action-button {
+    background-color: var(--color-secondary);
+    color: white;
+    padding: var(--spacing-xs) var(--spacing-md);
+    border: none;
+    border-radius: var(--border-radius-sm);
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: background-color 0.2s ease;
+}
+.control-group .action-button:hover {
+    background-color: var(--color-secondary-dark);
+}
+
+/* Updated Toggle Switch Label styling if needed, or just use general text styles */
+.toggle-switch-label { /* This is now a <span>, ensure it still looks correct */
+    font-size: 0.9em;
+    color: var(--color-text-dark);
+    font-weight: 500;
+    margin-right: var(--spacing-xs); /* Add some spacing if the new label wrapping causes it to be too close */
+}
+
+/* Styles for the new <label class="toggle-switch"> wrapper */
+label.toggle-switch {
+    position: relative;
+    display: inline-block; /* Or flex if you need to align something inside, though span.slider is absolute */
+    width: 50px;
+    height: 28px;
+    cursor: pointer; /* Make the whole area look clickable */
+}
+
+/*
+   The input itself is hidden using the .visually-hidden-input class
+   (expected to be defined globally).
+   So, remove the direct hiding rule:
+   .toggle-switch input { opacity: 0; width: 0; height: 0; } <--- REMOVED
+*/
+
+.slider { /* This is the <span class="slider round"></span> */
+    position: absolute;
+    /* cursor: pointer; /* Cursor is now on label.toggle-switch */
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: var(--color-neutral-medium-light, #ccc);
+    transition: .4s;
+}
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 20px; width: 20px;
+    left: 4px; bottom: 4px;
+    background-color: white;
+    transition: .4s;
+}
+
+/* Styling based on the state of the visually-hidden input */
+input.visually-hidden-input:checked + .slider { background-color: var(--color-success, #28a745); }
+input.visually-hidden-input:focus + .slider { box-shadow: 0 0 1px var(--color-success, #28a745); }
+input.visually-hidden-input:focus-visible + .slider { /* More explicit focus visible style */
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+}
+input.visually-hidden-input:checked + .slider:before { transform: translateX(22px); }
+
+.slider.round { border-radius: 28px; }
+.slider.round:before { border-radius: 50%; }
+
+.game-button-area {
+    flex-grow: 1;
+    display: flex;             /* MODIFIED: Use Flexbox for layout */
+    flex-wrap: wrap;           /* MODIFIED: Allow buttons to wrap */
+    justify-content: center;   /* MODIFIED: Center buttons horizontally */
+    align-items: center;       /* MODIFIED: Center buttons vertically within their line */
+    align-content: center;     /* MODIFIED: Center all lines if extra space (multi-line scenarios) */
+    gap: var(--spacing-md);
+    padding: var(--spacing-md); /* Adjusted padding for better centering appearance */
+    border: 2px dashed var(--color-primary-light, #a9c9ff);
+    border-radius: var(--border-radius-lg);
+    background-color: var(--color-background-content);
+    min-height: 250px;
+    position: relative;        /* Keep for absolute positioning of dragging buttons and placeholder */
+    overflow: auto;            /* Consider 'auto' or 'hidden'. 'auto' if content might legitimately overflow. */
+}
+
+.game-button-area[data-buttons-locked="true"] {
+    /* Optional styling for locked container */
+}
+
+.game-button-area .placeholder-text {
+    /* This can remain as is if you want it to overlay when no buttons are present. */
+    /* If using Flexbox and it's the only item, it would center too. */
+    /* However, explicit positioning is fine for a placeholder. */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1em;
+    color: var(--color-text-subtle);
+    text-align: center;
+    width: 80%;
+}
+
+.game-button-area .game-button {
+    /* position: absolute; /* REMOVED: Default state is now part of Flex flow. JS will add for dragging. */
+    color: var(--btn-text-color, #ffffff);
+    background-color: var(--btn-bg-color, #007bff);
+    border: 1px solid var(--btn-border-color, var(--btn-bg-color, #007bff));
+    width: var(--btn-width, 100px);
+    height: var(--btn-height, 100px);
+    border-radius: var(--btn-border-radius, 8px);
+    font-size: var(--btn-font-size, 18px);
+
+    display: inline-flex; /* Good for internal alignment of text/icon in button */
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    /* Transition for transform and box-shadow is fine. Left/Top transitions aren't needed if not absolutely positioned by default. */
+    transition: transform 0.15s ease-out, box-shadow 0.15s ease-out, background-color 0.2s;
+    box-shadow: var(--box-shadow-light);
+    font-weight: 500;
+    line-height: 1.2;
+    box-sizing: border-box;
+    user-select: none;
+    padding: var(--spacing-xs);
+    cursor: default; /* Default cursor, will be overridden by JS state or :hover states */
+    /* Add flex-shrink: 0 to prevent buttons from shrinking if the container is too small, if desired */
+    flex-shrink: 0;
+}
+
+/* Cursor states based on lock attribute on parent */
+.game-button-area[data-buttons-locked="false"] .game-button {
+    cursor: grab;
+}
+
+/* The .dragging class should ideally set position: absolute if JS doesn't do it directly */
+.game-button-area[data-buttons-locked="false"] .game-button.dragging {
+    cursor: grabbing;
+    z-index: 1001; /* Bring to front while dragging */
+    position: absolute; /* ADDED: Explicitly make dragging buttons absolute */
+    box-shadow: var(--box-shadow-strong); /* Enhanced shadow for dragging element */
+}
+.game-button-area[data-buttons-locked="false"] .game-button:active:not(.dragging) {
+    cursor: grabbing; /* Show grabbing when clicked, even before drag starts */
+}
+
+.game-button-area[data-buttons-locked="true"] .game-button {
+    cursor: default;
+}
+
+.game-button-area .game-button:hover:not(.dragging) {
+    /* transform: translateY(-2px) scale(1.02); /* Keep if desired */
+    /* box-shadow: var(--box-shadow-medium); /* Keep if desired */
+}
+
+.game-button-area .game-button.selected {
+    outline: 3px solid var(--color-primary);
+    outline-offset: 2px;
+    box-shadow: 0 0 10px var(--color-primary-light);
+    z-index: 1000; /* Bring selected to front (but below dragging) */
+}
+
+.game-button-area .game-button:active:not(.dragging) {
+    transform: translateY(0px) scale(1);
+    box-shadow: var(--box-shadow-inset);
+}
+
+.game-screen-footer-controls {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-md);
+    padding-top: var(--spacing-md);
+    margin-top: var(--spacing-md);
+    border-top: 1px solid var(--color-border-light);
+}
+.view-container[data-view-id="game-screen-basic"].is-fullscreen .game-screen-footer-controls {
+    display: none;
+}
+
+.game-screen-footer-controls .action-button {
+    padding: var(--spacing-sm) var(--spacing-lg);
+    font-size: 0.95em;
+    min-width: 150px;
+}
+.game-screen-footer-controls .clear-button {
+    background-color: var(--color-warning);
+    color: var(--color-warning-dark);
+}
+.game-screen-footer-controls .clear-button:hover {
+    background-color: var(--color-warning-dark);
+    color: var(--color-text-light);
+}

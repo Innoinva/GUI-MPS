@@ -1,0 +1,92 @@
+/* auditory-training-app/css/components/_tabs.css */
+
+.tab-bar-container {
+    margin-bottom: var(--spacing-md);
+    border-bottom: 2px solid var(--color-border);
+    overflow-x: auto; /* Allow horizontal scrolling if many tabs */
+    overflow-y: hidden;
+    padding-bottom: 2px; /* Prevent scrollbar from overlapping bottom border */
+}
+
+.tab-bar {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex; /* Arrange tabs in a row */
+    position: relative; /* For the active tab indicator line */
+}
+
+.tab-bar__tab {
+    padding: var(--spacing-sm) var(--spacing-md);
+    cursor: pointer;
+    color: var(--color-text-subtle);
+    background-color: transparent;
+    border: none; /* Remove default button border if using <button> */
+    border-bottom: 2px solid transparent; /* Placeholder for active indicator */
+    margin-bottom: -2px; /* Align with container's border-bottom */
+    transition: color var(--transition-speed-fast), border-color var(--transition-speed-fast);
+    white-space: nowrap; /* Prevent tab titles from wrapping */
+    display: flex; /* For icon and close button alignment */
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.tab-bar__tab:hover {
+    color: var(--color-primary);
+}
+
+.tab-bar__tab[data-state="active"] {
+    color: var(--color-primary);
+    font-weight: 600;
+    border-bottom-color: var(--color-primary);
+}
+
+.tab-bar__tab-close {
+    background: transparent;
+    border: none;
+    padding: var(--spacing-xs);
+    margin-left: var(--spacing-sm);
+    border-radius: 50%;
+    display: inline-flex; /* To center SVG */
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--color-text-subtle);
+}
+
+.tab-bar__tab-close svg {
+    width: 14px;
+    height: 14px;
+    stroke: currentColor; /* Make SVG color match text color */
+    stroke-width: 2.5;
+}
+
+.tab-bar__tab-close:hover {
+    background-color: var(--color-neutral-lightest);
+    color: var(--color-accent);
+}
+
+.tab-bar__tab[data-state="active"] .tab-bar__tab-close:hover {
+    /* Optional: different hover for close button on active tab */
+}
+
+.tab-content-container {
+    flex-grow: 1; /* Takes remaining space in main-content */
+    position: relative; /* For positioning tab content panels */
+}
+
+.tab-content {
+    display: none; /* Hidden by default */
+    padding: var(--spacing-sm) 0; /* Add some padding around content */
+    height: 100%; /* Ensure it can take full height if needed */
+    overflow-y: auto; /* Scroll content within tab if it overflows */
+}
+
+.tab-content[data-state="active"] {
+    display: block; /* Show active tab content */
+}
+
+/* Placeholder styling for tab content */
+.tab-content p {
+    line-height: 1.6;
+}

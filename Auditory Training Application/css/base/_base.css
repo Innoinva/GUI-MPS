@@ -1,0 +1,98 @@
+/* auditory-training-app/css/base/_base.css */
+
+/* Basic Reset & Box Sizing */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 16px; /* Base font size */
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased; /* Smoother fonts on WebKit browsers */
+    -moz-osx-font-smoothing: grayscale; /* Smoother fonts on Firefox */
+    overflow-x: hidden; /* Prevent horizontal scroll on the html element */
+}
+
+body {
+    font-family: var(--font-family-sans-serif);
+    color: var(--color-text-dark);
+    background-color: var(--color-background-app);
+    min-height: 100vh;
+    display: flex; /* Helps with full height layout for app shell */
+    flex-direction: column;
+}
+
+/* Remove list styles on ul, ol elements with a role attribute (for accessibility) */
+ul[role='list'],
+ol[role='list'] {
+    list-style: none;
+}
+
+/* Make images responsive by default */
+img,
+picture,
+video,
+canvas,
+svg {
+    display: block;
+    max-width: 100%;
+}
+
+/* Remove default text decoration from links */
+a {
+    text-decoration: none;
+    color: inherit; /* Inherit color from parent by default */
+}
+
+/* Basic button styling reset */
+button {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    color: inherit;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    text-align: inherit;
+}
+
+/* Basic heading styles */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 600; /* A common sensible default */
+    line-height: 1.2;
+}
+
+h1 { font-size: 2.25rem; } /* ~36px */
+h2 { font-size: 1.875rem; } /* ~30px */
+h3 { font-size: 1.5rem; }   /* ~24px */
+
+/*
+    ---------------------------------------------------------------------------
+    Global Utility Classes (NEW ADDITION STARTS HERE)
+    ---------------------------------------------------------------------------
+*/
+
+/* --- Visually Hidden Input --- */
+/*
+    Hides an element visually while keeping it accessible to assistive technologies.
+    Useful for creating custom-styled form controls like checkboxes or radio buttons.
+*/
+.visually-hidden-input {
+    position: absolute !important;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+    margin: -1px;
+    padding: 0;
+    border: 0;
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    white-space: nowrap;
+}
+
+/* Add other global utility classes below as needed */

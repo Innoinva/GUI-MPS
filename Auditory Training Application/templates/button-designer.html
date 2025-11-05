@@ -1,0 +1,230 @@
+<!-- auditory-training-app/templates/button-designer.html -->
+<div class="view-container configuration-screen" data-view-id="button-designer">
+    <header class="view-header">
+        <h2>Button Designer</h2>
+        <p>Visually configure and generate buttons for auditory training exercises.</p>
+    </header>
+
+    <div class="button-designer-content-wrapper" data-js-hook="button-designer-main-content">
+        <div class="app-container">
+            <!-- Title and intro paragraph -->
+            <h1>Advanced Auditory Button Generator (Corrected V4)</h1>
+            <p class="text-center intro-paragraph">Customize buttons for single or multi-note auditory stimuli. Visuals are for reference; labels aid learning.</p>
+
+            <form id="buttonGeneratorForm">
+                <div class="section-toggle-controls">
+                    <label title="Toggle visibility of Single-Stimulus Button controls">
+                        <input type="checkbox" id="toggle-single-stim-fieldset" checked> Single-Stimulus Controls
+                    </label>
+                    <label title="Toggle visibility of Multi-Stimulus Button controls">
+                        <input type="checkbox" id="toggle-multi-stim-fieldset" checked> Multi-Stimulus Controls
+                    </label>
+                </div>
+
+                <div class="main-controls-wrapper">
+                    <fieldset id="single-stim-fieldset">
+                        <legend>Single-Stimulus Buttons</legend>
+                        <div class="section-content-wrapper">
+                            <!-- Primary Configuration -->
+                            <div class="form-group">
+                                <label for="num-buttons-single">Number of Buttons:</label>
+                                <input type="number" id="num-buttons-single" min="1" max="50" value="3">
+                                <div class="validation-message" id="num-buttons-single-feedback"></div>
+                            </div>
+
+                            <!-- Visual Styling Group -->
+                            <div class="form-group">
+                                <label for="button-size-single">Button Size (px):</label>
+                                <input type="number" id="button-size-single" min="30" max="150" value="80">
+                                <div class="validation-message" id="button-size-single-feedback"></div>
+                            </div>
+                            <div class="form-group">
+                                <label for="button-color-single">Background Color:</label>
+                                <input type="color" id="button-color-single" value="#8e99f3">
+                            </div>
+                            <div class="form-group">
+                                <label for="text-color-single">Text Color:</label>
+                                <input type="color" id="text-color-single" value="#ffffff">
+                            </div>
+                            <div class="form-group">
+                                <label for="button-shape-single">Shape:</label>
+                                <select id="button-shape-single">
+                                    <option value="8px">Rounded Rectangle</option>
+                                    <option value="50%">Circle</option>
+                                    <option value="0px">Square</option>
+                                </select>
+                            </div>
+
+                            <!-- Labeling Group -->
+                            <div class="form-group">
+                                <label for="text-option-single">
+                                    <input type="checkbox" id="text-option-single" checked>
+                                    Include Label
+                                </label>
+                            </div>
+                            <div class="form-group">
+                                <label for="label-type-single">Label Type:</label>
+                                <select id="label-type-single">
+                                    <option value="letter" selected>Letter (A, B..)</option>
+                                    <option value="number">Number (1, 2..)</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="label-prefix-single">Label Prefix:</label>
+                                <input type="text" id="label-prefix-single" placeholder="e.g., S-" value="S-">
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <fieldset id="multi-stim-fieldset">
+                        <legend>Multi-Stimulus Buttons</legend>
+                        <div class="section-content-wrapper">
+                            <div class="form-group">
+                                <label for="num-base-notes">Number of Base Notes/Frequencies to Define (N):</label>
+                                <input type="number" id="num-base-notes" min="2" max="12" value="4">
+                                <div class="validation-message" id="num-base-notes-feedback"></div>
+                            </div>
+                             <div class="form-group">
+                                <label>Base Input Type:</label>
+                                <div class="radio-group"> <!-- Added class for styling radio buttons if needed -->
+                                    <label class="font-weight-normal"><input type="radio" name="base-note-type" value="name" checked> Note Names</label>
+                                    <label class="font-weight-normal"><input type="radio" name="base-note-type" value="frequency"> Frequencies</label>
+                                </div>
+                            </div>
+                            <div class="form-group form-group-span-all">
+                                <label>Base Notes/Frequencies Definitions:</label>
+                                <div id="base-notes-inputs-container"><small>Adjust "Number of Base Notes" above.</small></div>
+                                <div class="base-notes-actions">
+                                    <button type="button" id="clear-base-note-definitions-btn" class="action-button clear small-button orange-button">Clear Current Definitions</button>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="num-notes-per-combo">Notes per Combination (K):</label>
+                                <input type="number" id="num-notes-per-combo" min="2" max="12" value="2">
+                                <div class="validation-message" id="num-notes-per-combo-feedback"></div>
+                            </div>
+                            <div class="form-group form-group-span-all">
+                                <button type="button" id="generate-combinations-btn" class="action-button apply medium-button">List Possible Combinations</button>
+                                <div id="total-combinations-display">Total Combinations Found: 0</div>
+                            </div>
+                            <div class="form-group form-group-span-all">
+                                <label>Select Combinations to Generate Buttons For:</label>
+                                <div id="combinations-directory-container"><small>Click "List Possible Combinations" first.</small></div>
+                            </div>
+                            <hr class="fieldset-hr"> <!-- Added class for styling hr -->
+                            <p class="fieldset-sub-paragraph">Styling for generated multi-stimulus buttons:</p>
+                            <div class="form-group">
+                                <label for="button-size-multi">Button Size (px):</label>
+                                <input type="number" id="button-size-multi" min="30" max="150" value="90">
+                                <div class="validation-message" id="button-size-multi-feedback"></div>
+                            </div>
+                            <div class="form-group">
+                                <label for="button-color-multi">Background Color:</label>
+                                <input type="color" id="button-color-multi" value="#a5d6a7">
+                            </div>
+                            <div class="form-group">
+                                <label for="text-color-multi">Text Color:</label>
+                                <input type="color" id="text-color-multi" value="#1b5e20">
+                            </div>
+                             <div class="form-group">
+                                <label for="button-shape-multi">Shape:</label>
+                                <select id="button-shape-multi">
+                                    <option value="8px">Rounded Rectangle</option>
+                                    <option value="50%">Circle</option>
+                                    <option value="0px">Square</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="label-prefix-multi">Label Prefix (Multi-Stimulus):</label>
+                                <input type="text" id="label-prefix-multi" placeholder="e.g., M-" value="M-">
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <fieldset id="customize-specific-fieldset">
+                        <legend>Customize Specific Button(s)</legend>
+                         <p class="fieldset-sub-paragraph small-margin-top small-margin-bottom">Select buttons in the preview by clicking them, or use the dropdown.</p>
+                         <div class="section-content-wrapper">
+                            <div class="form-group">
+                                <label for="button-selector-trigger">Select via Dropdown:</label>
+                                <div class="dropdown-container">
+                                    <button type="button" id="button-selector-trigger" class="dropbtn" aria-haspopup="true" aria-expanded="false">Select Button(s)</button>
+                                    <div class="dropdown-menu" id="button-number-container" aria-labelledby="button-selector-trigger">
+                                         <div class="dropdown-menu-actions">
+                                            <button type="button" id="select-all-btn">Select All</button>
+                                            <button type="button" id="deselect-all-btn">Deselect All</button>
+                                            <button type="button" id="select-all-single-stim-btn">Select Single-Stimulus</button>
+                                            <button type="button" id="select-all-multi-stim-btn">Select Multi-Stimulus</button>
+                                        </div>
+                                        <div id="checkbox-list"><!-- Categorized list by JS --></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="specific-button-size">New Size (px):</label>
+                                <input type="number" id="specific-button-size" min="30" max="200" placeholder="Unchanged">
+                                <div class="validation-message" id="specific-button-size-feedback"></div>
+                            </div>
+                            <div class="form-group">
+                                <label for="specific-button-bg-color">New Background:</label>
+                                <input type="color" id="specific-button-bg-color" value="#78909c">
+                            </div>
+                            <div class="form-group">
+                                <label for="specific-button-text-color">New Text Color:</label>
+                                <input type="color" id="specific-button-text-color" value="#ffffff">
+                            </div>
+                            <div class="form-group">
+                                <label for="specific-button-prefix">New Prefix:</label>
+                                <input type="text" id="specific-button-prefix" placeholder="Prepend or set new">
+                            </div>
+                            <div class="form-group">
+                                <label for="specific-custom-value">New Full Label:</label>
+                                <input type="text" id="specific-custom-value" placeholder="Complete override">
+                            </div>
+                             <div class="form-group">
+                                <label for="specific-button-shape">New Shape:</label>
+                                <select id="specific-button-shape">
+                                    <option value="">Unchanged</option>
+                                    <option value="8px">Rounded Rectangle</option>
+                                    <option value="50%">Circle</option>
+                                    <option value="0px">Square</option>
+                                </select>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+
+                <div class="generation-toggle-controls">
+                    <label><input type="checkbox" id="generate-single-stim-buttons-toggle" checked> Generate Single-Stimulus</label>
+                    <label><input type="checkbox" id="generate-multi-stim-buttons-toggle" checked> Generate Multi-Stimulus</label>
+                </div>
+
+                <div class="control-buttons-main">
+                    <button type="button" id="generate-all-buttons" class="action-button generate">Generate/Add Buttons</button>
+                    <button type="button" id="apply-to-selected-btn" class="action-button apply">Apply Styles to Selected</button>
+                    <button type="button" id="delete-selected-buttons" class="action-button delete">Delete Selected</button>
+                    <button type="button" id="clear-all-preview-btn" class="action-button clear">Clear All Buttons from Preview</button>
+                    <button type="button" id="finalize-and-use-buttons-btn" class="action-button success-button">Finalize & Use Buttons</button>
+                </div>
+
+                <div id="button-designer-feedback" class="feedback-message" aria-live="polite"></div>
+            </form>
+
+            <fieldset id="preview-display-options-fieldset" class="fieldset-margin-top fieldset-margin-bottom">
+                <legend>Preview Display Options</legend>
+                <!-- Adjusted grid class for this specific fieldset -->
+                <div class="section-content-wrapper preview-options-grid">
+                    <div class="form-group">
+                        <label for="preview-highlight-color">Selection Highlight Color:</label>
+                        <input type="color" id="preview-highlight-color" value="#2ecc71">
+                    </div>
+                </div>
+            </fieldset>
+
+            <h2>Button Preview Area</h2>
+            <div id="button-preview-container" class="preview-area">
+                <!-- Generated buttons will appear here -->
+            </div>
+        </div>
+    </div>
+</div>

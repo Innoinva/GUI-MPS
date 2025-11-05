@@ -1,0 +1,439 @@
+/* auditory-training-app/css/views/_button-designer.css */
+
+/* Styles specific to the Button Designer view */
+.view-container[data-view-id="button-designer"] .app-container {
+    /* Add any specific container styling for the button designer here if needed */
+    /* For example, max-width, margin, etc. */
+    /* max-width: 1200px; */
+    /* margin: 0 auto; */
+    padding: var(--spacing-md); /* Consistent padding */
+}
+
+.view-container[data-view-id="button-designer"] h1 {
+    text-align: center; /* Consistent with original inline style for the main H1 */
+    margin-bottom: var(--spacing-sm);
+}
+
+/* General Text Utilities (can be global if used elsewhere, or scoped here) */
+.view-container[data-view-id="button-designer"] .text-center {
+    text-align: center;
+}
+
+.view-container[data-view-id="button-designer"] .font-weight-normal {
+    font-weight: normal;
+}
+
+/* Specific Paragraph Styling */
+.view-container[data-view-id="button-designer"] .intro-paragraph {
+    margin-bottom: var(--spacing-lg); /* Was 25px, using variable */
+    font-size: 0.9em;
+    color: var(--color-text-subtle, #555); /* Was #555, using variable */
+    text-align: center; /* Added this as it was on the original H1's p tag */
+}
+
+.view-container[data-view-id="button-designer"] .fieldset-sub-paragraph {
+    grid-column: 1 / -1; /* For elements directly within a grid layout like section-content-wrapper */
+    font-size: 0.9em;
+    color: var(--color-text-subtle, #555);
+    margin-top: 0; /* Default from original inline style */
+    margin-bottom: var(--spacing-md); /* Provide some default bottom margin */
+}
+
+.view-container[data-view-id="button-designer"] .fieldset-sub-paragraph.small-margin-top {
+    margin-top: calc(-1 * var(--spacing-sm)); /* Was -10px, using variable, adjust as needed */
+}
+.view-container[data-view-id="button-designer"] .fieldset-sub-paragraph.small-margin-bottom {
+    margin-bottom: var(--spacing-md); /* Was 15px */
+}
+
+
+/* Button Specific Modifier Classes */
+.view-container[data-view-id="button-designer"] .action-button.small-button {
+    font-size: 0.8em;
+    padding: var(--spacing-xxs) var(--spacing-sm); /* Was 5px 10px */
+    width: auto;
+}
+
+.view-container[data-view-id="button-designer"] .action-button.medium-button {
+    font-size: 0.9em;
+    padding: var(--spacing-xs) var(--spacing-md); /* Was 8px 15px */
+    width: auto;
+}
+
+.view-container[data-view-id="button-designer"] .action-button.orange-button {
+    background-color: var(--color-warning-dark, #f39c12); /* Was #f39c12 */
+    color: var(--color-text-light, #fff); /* Assuming light text on orange */
+}
+.view-container[data-view-id="button-designer"] .action-button.orange-button:hover {
+    background-color: var(--color-warning, #e67e22); /* Darken on hover */
+}
+
+.view-container[data-view-id="button-designer"] .action-button.success-button {
+    background-color: var(--color-success);
+    color: var(--color-text-light, #fff); /* Assuming light text on success color */
+}
+.view-container[data-view-id="button-designer"] .action-button.success-button:hover {
+    background-color: var(--color-success-dark, #1e7e34); /* Darken on hover */
+}
+
+/* Styling for HR elements within fieldsets */
+.view-container[data-view-id="button-designer"] .fieldset-hr {
+    grid-column: 1 / -1; /* If used inside a grid container like .section-content-wrapper */
+    border: 0;
+    border-top: 1px solid var(--color-border-light, #eee); /* Was #eee */
+    margin: var(--spacing-sm) 0; /* Was 10px 0 */
+}
+
+/* Margin utilities for fieldsets or other block elements */
+.view-container[data-view-id="button-designer"] .fieldset-margin-top {
+    margin-top: var(--spacing-lg);
+}
+.view-container[data-view-id="button-designer"] .fieldset-margin-bottom {
+    margin-bottom: var(--spacing-sm);
+}
+
+/* Specific grid layout for preview options */
+.view-container[data-view-id="button-designer"] .preview-options-grid {
+    grid-template-columns: minmax(200px, auto) 1fr;
+}
+
+
+/* Styles for the main button designer form elements if not covered by global styles */
+.view-container[data-view-id="button-designer"] #buttonGeneratorForm {
+    /* Add form specific styles if needed */
+}
+
+.view-container[data-view-id="button-designer"] .section-toggle-controls {
+    display: flex;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+    padding: var(--spacing-sm);
+    background-color: var(--color-neutral-lightest);
+    border-radius: var(--border-radius-sm);
+    justify-content: center;
+}
+.view-container[data-view-id="button-designer"] .section-toggle-controls label {
+    cursor: pointer;
+    user-select: none;
+}
+
+
+.view-container[data-view-id="button-designer"] .main-controls-wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 450px), 1fr)); /* Responsive columns */
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-lg);
+}
+
+.view-container[data-view-id="button-designer"] fieldset {
+    border: 1px solid var(--color-border-default);
+    padding: var(--spacing-md);
+    border-radius: var(--border-radius-md);
+    background-color: var(--color-background-content);
+}
+.view-container[data-view-id="button-designer"] fieldset.collapsed {
+    /* Styles for when a fieldset is programmatically collapsed */
+    /* e.g., display: none; or reduced height/opacity */
+}
+
+.view-container[data-view-id="button-designer"] legend {
+    font-weight: bold;
+    padding: 0 var(--spacing-sm);
+    margin-left: var(--spacing-sm); /* Align with padding of fieldset */
+    color: var(--color-primary-dark);
+}
+
+.view-container[data-view-id="button-designer"] .section-content-wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Default responsive columns for form groups */
+    gap: var(--spacing-md) var(--spacing-lg);
+    align-items: start; /* Align items at the start of the track */
+}
+
+.view-container[data-view-id="button-designer"] .form-group {
+    display: flex;
+    flex-direction: column; /* Stack label and input */
+    gap: var(--spacing-xxs);
+}
+.view-container[data-view-id="button-designer"] .form-group-span-all {
+    grid-column: 1 / -1; /* Make this group span all columns */
+}
+
+.view-container[data-view-id="button-designer"] .form-group label,
+.view-container[data-view-id="button-designer"] .form-group .label-like { /* .label-like for non-label elements acting as one */
+    font-weight: 500;
+    font-size: 0.9em;
+    color: var(--color-text-dark);
+}
+
+.view-container[data-view-id="button-designer"] .radio-group {
+    display: flex;
+    gap: var(--spacing-md);
+    align-items: center;
+}
+.view-container[data-view-id="button-designer"] .radio-group label {
+    display: flex; /* Align checkbox and text */
+    align-items: center;
+    gap: var(--spacing-xxs);
+    font-weight: normal; /* Overriding default label weight if needed */
+    cursor: pointer;
+}
+
+
+.view-container[data-view-id="button-designer"] input[type="text"],
+.view-container[data-view-id="button-designer"] input[type="number"],
+.view-container[data-view-id="button-designer"] select {
+    width: 100%; /* Make form inputs take full width of their grid cell */
+    padding: var(--spacing-xs);
+    border: 1px solid var(--color-border-default);
+    border-radius: var(--border-radius-sm);
+}
+.view-container[data-view-id="button-designer"] input[type="color"] {
+    min-height: 38px; /* Consistent height with other inputs */
+    min-width: 60px;
+    padding: var(--spacing-xxs);
+}
+
+.view-container[data-view-id="button-designer"] .validation-message {
+    font-size: 0.8em;
+    color: var(--color-danger);
+    min-height: 1.2em; /* Reserve space to prevent layout shifts */
+}
+.view-container[data-view-id="button-designer"] input.invalid-input {
+    border-color: var(--color-danger);
+    background-color: var(--color-danger-light-bg);
+}
+
+
+.view-container[data-view-id="button-designer"] .base-notes-actions {
+    margin-top: var(--spacing-sm);
+}
+
+.view-container[data-view-id="button-designer"] #total-combinations-display {
+    margin-top: var(--spacing-xs);
+    font-weight: bold;
+}
+
+.view-container[data-view-id="button-designer"] #combinations-directory-container {
+    max-height: 200px;
+    overflow-y: auto;
+    border: 1px solid var(--color-border-light);
+    padding: var(--spacing-sm);
+    border-radius: var(--border-radius-sm);
+    background-color: var(--color-background-app); /* Slightly different background */
+}
+.view-container[data-view-id="button-designer"] .combo-item {
+    padding: var(--spacing-xxs) 0;
+}
+.view-container[data-view-id="button-designer"] .combo-item label {
+    margin-left: var(--spacing-xs);
+    cursor: pointer;
+}
+
+
+.view-container[data-view-id="button-designer"] .generation-toggle-controls {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-lg);
+    margin-top: var(--spacing-lg);
+    margin-bottom: var(--spacing-lg);
+    padding: var(--spacing-sm);
+}
+.view-container[data-view-id="button-designer"] .generation-toggle-controls label {
+    cursor: pointer;
+    user-select: none;
+}
+
+.view-container[data-view-id="button-designer"] .control-buttons-main {
+    display: flex;
+    flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
+    justify-content: center;
+    gap: var(--spacing-md);
+    padding-top: var(--spacing-md);
+    border-top: 1px solid var(--color-border-light);
+    margin-bottom: var(--spacing-lg);
+}
+
+.view-container[data-view-id="button-designer"] .feedback-message {
+    min-height: 1.5em; /* Reserve space */
+    padding: var(--spacing-sm);
+    border-radius: var(--border-radius-sm);
+    text-align: center; /* From original inline style */
+    margin-top: var(--spacing-md); /* From original inline style */
+}
+.view-container[data-view-id="button-designer"] .feedback-message.info {
+    background-color: var(--color-info-light-bg);
+    color: var(--color-info-dark);
+    border: 1px solid var(--color-info);
+}
+.view-container[data-view-id="button-designer"] .feedback-message.success {
+    background-color: var(--color-success-light-bg);
+    color: var(--color-success-dark);
+    border: 1px solid var(--color-success);
+}
+.view-container[data-view-id="button-designer"] .feedback-message.warning {
+    background-color: var(--color-warning-light-bg);
+    color: var(--color-warning-dark);
+    border: 1px solid var(--color-warning);
+}
+.view-container[data-view-id="button-designer"] .feedback-message.error { /* Same as .danger */
+    background-color: var(--color-danger-light-bg);
+    color: var(--color-danger-dark);
+    border: 1px solid var(--color-danger);
+}
+
+
+/* Button Preview Area */
+.view-container[data-view-id="button-designer"] .preview-area {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: var(--spacing-md);
+    padding: var(--spacing-lg);
+    min-height: 200px;
+    border: 2px dashed var(--color-primary-light);
+    border-radius: var(--border-radius-lg);
+    background-color: var(--color-neutral-lightest);
+    position: relative; /* For any absolutely positioned feedback or overlays if needed */
+}
+
+.view-container[data-view-id="button-designer"] .generated-button {
+    /* Base styles for buttons in the preview. JS will set CSS vars for specifics. */
+    color: var(--btn-text-color, #ffffff);
+    background-color: var(--btn-bg-color, #007bff);
+    border: 1px solid var(--btn-border-color, var(--btn-bg-color));
+    width: var(--btn-width, 80px);
+    height: var(--btn-height, 80px);
+    border-radius: var(--btn-border-radius, 8px);
+    font-size: 1em; /* JS can override this via --btn-font-size */
+    
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.1s ease-out, box-shadow 0.1s ease-out;
+    box-shadow: var(--box-shadow-light);
+    user-select: none;
+    position: relative; /* For ::before/::after pseudo-elements if needed for selection */
+}
+
+.view-container[data-view-id="button-designer"] .generated-button:hover {
+    /* transform: scale(1.05); */ /* Optional hover effect */
+    box-shadow: var(--box-shadow-medium);
+}
+
+.view-container[data-view-id="button-designer"] .generated-button.selected-in-preview {
+    /* Use a pseudo-element for a border that doesn't affect layout, or adjust box-shadow */
+    /* outline: 3px solid var(--color-success); */
+    /* outline-offset: 2px; */
+    box-shadow: 0 0 0 3px var(--preview-select-glow, var(--color-success)), var(--box-shadow-medium); /* Use CSS var from JS */
+}
+
+/* Dropdown for button selection */
+.view-container[data-view-id="button-designer"] .dropdown-container {
+    position: relative;
+    display: inline-block; /* Or block if it should take full width */
+}
+
+.view-container[data-view-id="button-designer"] .dropbtn {
+    background-color: var(--color-background-content);
+    color: var(--color-text-dark);
+    padding: var(--spacing-sm) var(--spacing-md);
+    font-size: 0.9em;
+    border: 1px solid var(--color-border-default);
+    border-radius: var(--border-radius-sm);
+    cursor: pointer;
+    min-width: 200px; /* Ensure it's wide enough */
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.view-container[data-view-id="button-designer"] .dropbtn.active,
+.view-container[data-view-id="button-designer"] .dropbtn:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 2px var(--color-primary-light-bg);
+}
+
+.view-container[data-view-id="button-designer"] .dropdown-arrow {
+    margin-left: var(--spacing-sm);
+    transition: transform 0.2s ease-in-out;
+}
+.view-container[data-view-id="button-designer"] .dropbtn.active .dropdown-arrow {
+    transform: rotate(180deg);
+}
+
+
+.view-container[data-view-id="button-designer"] .dropdown-menu {
+    display: none; /* Hidden by default, JS toggles 'show' */
+    position: absolute;
+    background-color: var(--color-background-content);
+    min-width: 250px;
+    box-shadow: var(--box-shadow-strong);
+    border: 1px solid var(--color-border-light);
+    border-radius: var(--border-radius-sm);
+    z-index: var(--z-index-dropdown, 100); /* Use z-index variable */
+    max-height: 300px; /* Limit height and make it scrollable */
+    overflow-y: auto;
+}
+.view-container[data-view-id="button-designer"] .dropdown-menu.show {
+    display: block;
+}
+
+.view-container[data-view-id="button-designer"] .dropdown-menu-actions {
+    padding: var(--spacing-xs);
+    border-bottom: 1px solid var(--color-border-light);
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-xs);
+}
+.view-container[data-view-id="button-designer"] .dropdown-menu-actions button {
+    background-color: var(--color-neutral-lightest);
+    border: 1px solid var(--color-border-default);
+    padding: var(--spacing-xxs) var(--spacing-xs);
+    font-size: 0.8em;
+    border-radius: var(--border-radius-sm);
+    flex-grow: 1; /* Allow buttons to grow and fill space */
+}
+.view-container[data-view-id="button-designer"] .dropdown-menu-actions button:hover {
+    background-color: var(--color-neutral-light);
+    border-color: var(--color-neutral-dark);
+}
+
+.view-container[data-view-id="button-designer"] #checkbox-list {
+    padding: var(--spacing-xs) 0; /* Padding for the overall list area */
+}
+.view-container[data-view-id="button-designer"] .dropdown-optgroup-label {
+    padding: var(--spacing-xs) var(--spacing-md);
+    font-size: 0.8em;
+    font-weight: bold;
+    color: var(--color-text-subtle);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-top: var(--spacing-xs); /* Space above group labels */
+}
+.view-container[data-view-id="button-designer"] .dropdown-optgroup-label:first-child {
+    margin-top: 0;
+}
+
+.view-container[data-view-id="button-designer"] .checkbox-group {
+    display: flex;
+    align-items: center;
+    padding: var(--spacing-sm) var(--spacing-md);
+    cursor: pointer;
+}
+.view-container[data-view-id="button-designer"] .checkbox-group:hover {
+    background-color: var(--color-primary-light-bg);
+}
+.view-container[data-view-id="button-designer"] .checkbox-group input[type="checkbox"] {
+    margin-right: var(--spacing-sm);
+    cursor: pointer;
+}
+.view-container[data-view-id="button-designer"] .checkbox-group label {
+    font-weight: normal;
+    font-size: 0.9em;
+    flex-grow: 1; /* Ensure label takes available space */
+    cursor: pointer;
+}

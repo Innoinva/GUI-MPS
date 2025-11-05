@@ -1,0 +1,129 @@
+/* auditory-training-app/css/layout/_app-shell.css */
+
+.app-shell {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensure app shell takes full viewport height */
+    background-color: var(--color-background-app);
+}
+
+.app-header {
+    background-color: var(--color-neutral-darkest);
+    color: var(--color-text-light);
+    height: var(--header-height);
+    padding: 0 var(--spacing-md);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed; /* Keep header at the top */
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: var(--z-index-header);
+    box-shadow: var(--box-shadow-light);
+}
+
+.app-header__left,
+.app-header__center,
+.app-header__right {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.app-header__center {
+    flex-grow: 1; /* Allow center to take up available space */
+    justify-content: center;
+}
+
+.app-header__menu-toggle,
+.app-header__action-button {
+    background-color: transparent;
+    border: none;
+    color: var(--color-text-light);
+    padding: var(--spacing-sm);
+    border-radius: var(--border-radius-md);
+    display: flex; /* For icon alignment */
+    align-items: center;
+    justify-content: center;
+}
+
+.app-header__menu-toggle:hover,
+.app-header__action-button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.app-header__menu-toggle svg,
+.app-header__action-button svg {
+    /* SVGs in index.html already have width/height, fill. Adjust if using different icons. */
+}
+
+.app-header__logo {
+    font-size: 1.25rem; /* ~20px */
+    font-weight: 700;
+    margin-left: var(--spacing-sm);
+}
+
+.app-layout {
+    display: flex;
+    flex-grow: 1; /* Takes remaining height after header */
+    padding-top: var(--header-height); /* Offset content below fixed header */
+    overflow: hidden; /* Important for sidebar/content scroll behavior */
+}
+
+.app-sidebar {
+    background-color: var(--color-neutral-dark);
+    color: var(--color-text-light);
+    flex-shrink: 0; /* Prevent sidebar from shrinking */
+    overflow-y: auto; /* Allow sidebar content to scroll if it exceeds height */
+    transition: width var(--transition-speed-normal) ease-in-out;
+    z-index: var(--z-index-sidebar);
+    box-shadow: var(--box-shadow-light);
+}
+
+/* States for sidebar: expanded and collapsed */
+.app-sidebar[data-state="expanded"] {
+    width: var(--sidebar-width-expanded);
+}
+
+.app-sidebar[data-state="collapsed"] {
+    width: var(--sidebar-width-collapsed);
+    overflow-x: hidden; /* Hide text when collapsed */
+}
+
+/* Styles for main content area */
+.main-content {
+    flex-grow: 1; /* Takes remaining width */
+    background-color: var(--color-background-content);
+    padding: var(--spacing-lg);
+    overflow-y: auto; /* Allow main content to scroll independently */
+    display: flex;
+    flex-direction: column;
+}
+
+.main-content__header {
+    margin-bottom: var(--spacing-md);
+    padding-bottom: var(--spacing-md);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.main-content__header h2 {
+    color: var(--color-neutral-darkest);
+}
+
+/* Media query for smaller screens (example) */
+@media (max-width: 768px) {
+    .app-sidebar[data-state="expanded"] {
+        /* On smaller screens, an expanded sidebar might overlay content or be fully hidden */
+        /* For now, let's just make it narrower */
+        width: 200px; 
+    }
+
+    .app-header__logo {
+        font-size: 1rem; /* Smaller logo text */
+    }
+
+    .app-sidebar[data-state="collapsed"] .primary-nav__text {
+        display: none; /* Ensure text is hidden if not already by overflow */
+    }
+}

@@ -1,0 +1,68 @@
+<!-- auditory-training-app/templates/basic-additive-synth.html -->
+<div class="view-container workbench-container" data-view-id="basic-additive-synth">
+    <header class="view-header">
+        <h2>Basic Additive Synth Controls</h2>
+        <p>Adjust parameters for a few partials. (GUI Only - No Audio Output)</p>
+    </header>
+
+    <div class="partials-controls">
+        <!-- Partial 1 -->
+        <fieldset class="partial-group" data-partial-index="0">
+            <legend>Partial 1</legend>
+            <div class="control-row">
+                <label for="partial-0-freq-ratio">Freq. Ratio:</label>
+                <input type="range" id="partial-0-freq-ratio" class="slider" 
+                       data-js-hook="partial-control" data-parameter="freqRatio"
+                       min="0.1" max="16" step="0.01" value="1.00">
+                <span class="slider-value" data-js-hook="partial-value-display" data-parameter="freqRatio">1.00</span>
+            </div>
+            <div class="control-row">
+                <label for="partial-0-amplitude">Amplitude:</label>
+                <input type="range" id="partial-0-amplitude" class="slider"
+                       data-js-hook="partial-control" data-parameter="amplitude"
+                       min="0" max="1" step="0.01" value="0.75">
+                <span class="slider-value" data-js-hook="partial-value-display" data-parameter="amplitude">0.75</span>
+            </div>
+            <div class="control-row">
+                <label for="partial-0-phase">Initial Phase (deg):</label>
+                <input type="range" id="partial-0-phase" class="slider"
+                       data-js-hook="partial-control" data-parameter="initialPhase"
+                       min="0" max="360" step="1" value="0">
+                <span class="slider-value" data-js-hook="partial-value-display" data-parameter="initialPhase">0</span>
+            </div>
+        </fieldset>
+
+        <!-- Partial 2 -->
+        <fieldset class="partial-group" data-partial-index="1">
+            <legend>Partia<span style="font-family: 'Times New Roman', serif;">l</span> 2</legend> <!-- Intentionally slightly different for visual check -->
+            <div class="control-row">
+                <label for="partial-1-freq-ratio">Freq. Ratio:</label>
+                <input type="range" id="partial-1-freq-ratio" class="slider"
+                       data-js-hook="partial-control" data-parameter="freqRatio"
+                       min="0.1" max="16" step="0.01" value="2.00">
+                <span class="slider-value" data-js-hook="partial-value-display" data-parameter="freqRatio">2.00</span>
+            </div>
+            <div class="control-row">
+                <label for="partial-1-amplitude">Amplitude:</label>
+                <input type="range" id="partial-1-amplitude" class="slider"
+                       data-js-hook="partial-control" data-parameter="amplitude"
+                       min="0" max="1" step="0.01" value="0.50">
+                <span class="slider-value" data-js-hook="partial-value-display" data-parameter="amplitude">0.50</span>
+            </div>
+             <div class="control-row">
+                <label for="partial-1-phase">Initial Phase (deg):</label>
+                <input type="range" id="partial-1-phase" class="slider"
+                       data-js-hook="partial-control" data-parameter="initialPhase"
+                       min="0" max="360" step="1" value="90">
+                <span class="slider-value" data-js-hook="partial-value-display" data-parameter="initialPhase">90</span>
+            </div>
+        </fieldset>
+        
+        <!-- Add more partials or master controls here later -->
+    </div>
+
+    <div class="actions-panel">
+        <button class="action-button" data-js-hook="synth-play-sound" disabled>Play Sound (No Audio)</button>
+        <button class="action-button" data-js-hook="synth-save-model">Save to Sound Bank (No Action)</button>
+    </div>
+</div>
