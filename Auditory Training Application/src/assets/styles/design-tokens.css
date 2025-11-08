@@ -1,0 +1,108 @@
+/* ===================================================================
+   Design System Tokens - Auditory Training App
+   These variables define the visual language of the application.
+   =================================================================== */
+
+:root {
+  /* ==================== Colors ==================== */
+  
+  /* Background colors (dark theme) */
+  --color-bg-primary: #1a1a1a;
+  --color-bg-secondary: #2a2a2a;
+  --color-bg-tertiary: #3a3a3a;
+  --color-bg-hover: #404040;
+  --color-bg-active: #4a4a4a;
+  --color-bg-overlay: rgba(0, 0, 0, 0.7);
+  
+  /* Accent colors */
+  --color-accent-primary: #00d4ff;
+  --color-accent-secondary: #ff006e;
+  --color-accent-tertiary: #00ff88;
+  --color-accent-warning: #ff9500;
+  --color-accent-error: #ff3b30;
+  --color-accent-success: #34c759;
+  
+  /* Text colors */
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #a0a0a0;
+  --color-text-tertiary: #707070;
+  --color-text-disabled: #505050;
+  --color-text-on-accent: #000000;
+  
+  /* Border colors */
+  --color-border-primary: #3a3a3a;
+  --color-border-secondary: #505050;
+  --color-border-focus: var(--color-accent-primary);
+  
+  /* ==================== Spacing ==================== */
+  
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-2xl: 48px;
+  --space-3xl: 64px;
+  
+  /* ==================== Typography ==================== */
+  
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+  
+  --font-size-xs: 11px;
+  --font-size-sm: 13px;
+  --font-size-md: 15px;
+  --font-size-lg: 18px;
+  --font-size-xl: 24px;
+  --font-size-2xl: 32px;
+  
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  
+  --line-height-tight: 1.2;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.75;
+  
+  /* ==================== Shadows & Elevation ==================== */
+  
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.5);
+  --shadow-xl: 0 12px 48px rgba(0, 0, 0, 0.6);
+  
+  /* ==================== Border Radius ==================== */
+  
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-full: 9999px;
+  
+  /* ==================== Transitions ==================== */
+  
+  --transition-fast: 150ms ease;
+  --transition-normal: 250ms ease;
+  --transition-slow: 350ms ease;
+  
+  --easing-ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --easing-ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --easing-ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  
+  /* ==================== Z-Index ==================== */
+  
+  --z-base: 1;
+  --z-sidebar: 100;
+  --z-header: 200;
+  --z-dropdown: 1000;
+  --z-modal: 2000;
+  --z-tooltip: 3000;
+  --z-notification: 4000;
+  
+  /* ==================== Layout ==================== */
+  
+  --sidebar-width: 240px;
+  --header-height: 64px;
+  --tab-bar-height: 48px;
+}
